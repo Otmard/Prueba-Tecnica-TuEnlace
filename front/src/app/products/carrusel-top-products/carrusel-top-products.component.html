@@ -1,0 +1,21 @@
+<div class="relative">
+  <h3 class="font-bold text-center">Top 5 Productos</h3>
+  <div class="overflow-hidden">
+    <div #carousel class="flex transition-transform duration-500">
+      @for (product of products; track product.id) {
+      <div class="bg-white rounded-lg shadow-md overflow-hidden w-64 m-2">
+        <img
+          [src]="product.image"
+          alt="Product Image"
+          class="h-24 w-full object-cover"
+        />
+        <div class="p-4">
+          <h3 class="font-semibold mb-2">
+            {{ product.title | slice : 0 : 20 }}
+          </h3>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

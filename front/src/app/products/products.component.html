@@ -1,0 +1,63 @@
+<app-carrusel-top-products class="m-5"></app-carrusel-top-products>
+<div class="flex justify-center my-4">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Buscar por título"
+    class="border border-gray-300 rounded px-4 py-2"
+  />
+  <button
+    (click)="buscarPorTitulo()"
+    class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-500 transition duration-300 ease-in-out ml-2"
+  >
+    Buscar
+  </button>
+</div>
+<div class="container mx-auto p-4">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    @if (displayedProducts.length > 0) { @for (product of
+    displayedProducts;track product.id) {
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <img
+        [src]="product.image"
+        alt="Product Image"
+        class="h-48 w-full object-cover"
+      />
+      <div class="p-4">
+        <h3 class="text-lg font-semibold mb-2">{{ product.title }}</h3>
+        <p class="text-gray-700 text-sm mb-4">
+          {{ product.description | slice : 0 : 100 }}...
+        </p>
+        <p class="text-lg font-bold text-indigo-600 mb-2">
+          {{ product.price | currency }}
+        </p>
+        <button
+          class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-500"
+        >
+          Ver más
+        </button>
+      </div>
+    </div>
+    }
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="p-4 flex flex-row justify-center items-center">
+        <button
+          class="bg-indigo-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-indigo-500 transition duration-300"
+          (click)="limit = limit + 10; cargarProductos(); searchTerm = ''"
+        >
+          Ver Más
+        </button>
+      </div>
+    </div>
+
+    }@else {
+    <div class="col-span-full text-center p-4">
+      <p class="text-lg text-gray-500">
+        No hay coincidencias para "{{ searchTerm }}"
+      </p>
+    </div>
+    }
+  </div>
+</div>
