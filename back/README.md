@@ -13,7 +13,7 @@ Antes de comenzar con la instalación, asegúrate de tener instalados los siguie
   ```bash
   npm install -g @nestjs/cli
   ```
-
+- **Mysql**: Asegúrate de tener un servicio de mySQL corriendo al cual puedas conectarte y tener las credenciales de Acceso
 ## Instalación
 
 Sigue los siguientes pasos para instalar y ejecutar el backend en tu entorno local.
